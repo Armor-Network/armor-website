@@ -1,0 +1,10 @@
+# IDEs/editors
+.idea/
+.vs/
+xcuserdata
+/bytecoin.cbp
+*swp
+WorkspaceSettings.xcsettings
+
+# Mac specific
+.DS_Store
