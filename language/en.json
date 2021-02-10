@@ -1,4 +1,4 @@
-{
+var lang = {
     "title": "Armor Network.",
     "subtitle": "A fast, easy and anonymous payment system.",
     "titleButton": "Telegram Wallet",

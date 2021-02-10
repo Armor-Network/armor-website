@@ -1,25 +1,52 @@
 // <!-- ?v1.28 -->
 
     var language;
-    function getLanguage() {
-        (localStorage.getItem('language') == null) ? setLanguage('en') : false;
-        $.ajax({
-        url:  '/language/' +  localStorage.getItem('language') + '.json?v1.28',
+	
+	function loadScript(url, callback)
+	{
+		var head = document.getElementsByTagName("head")[0];
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = url;
+
+		script.onreadystatechange = callback;
+		script.onload = callback;
+
+		// Fire the loading
+		head.appendChild(script);		//load script
+		//run callback-function after loading it,
+		setTimeout(
+			function(){
+				head.removeChild(script);		//and then remove this script from the head
+			},
+			2000								//after some time...
+		);
+	}
+	
+    function getLanguage(func) {
+        (localStorage.getItem('ArmorWebSitelanguage') == null) ? setLanguage('en') : false;
+        /*
+		$.ajax({
+        url:  '/language/' +  localStorage.getItem('language') + '.json',
         dataType: 'json', async: false, dataType: 'json',
         success: function (lang) { language = lang } });
+		*/
+		
+		loadScript('./language/' +  localStorage.getItem('ArmorWebSitelanguage') + '.json', function(){language = lang; func();});
     }
 
     function setLanguage(lang) {
-        localStorage.setItem('language', lang);
+        localStorage.setItem('ArmorWebSitelanguage', lang);
         location.reload();
     }
 
     $(document).ready(function(){
-        getLanguage();
-        if(language== '')
+        if(language== ''){
             language = 'en';
+		}
 
-        $('#title').text(language.title);
+        var DoAfterLoadLang = function(){
+		$('#title').text(language.title);
         $('#subtitle').text(language.subtitle);
         $('#titleButton').text(language.titleButton);
         $('#menuItem1').text(language.menuItem1);
@@ -156,4 +183,8 @@
         $('#text105').text(language.text105);
 
         fetchLiveStats();
+		}
+		
+		getLanguage(DoAfterLoadLang);
+
     });
