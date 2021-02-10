@@ -1,4 +1,4 @@
-{
+var lang = {
     "title": "Armor-Nätverket.",
     "subtitle": "Ett snabbt, enkelt och anonymt betalningssätt.",
     "titleButton": "Telegram-plånbok",

@@ -1,4 +1,4 @@
-{
+var lang = {
     "title": "Armor Network.",
     "subtitle": "Un moyen de paiement rapide, simple et anonyme.",
     "titleButton": "Wallet Telegram",

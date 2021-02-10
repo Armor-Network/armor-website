@@ -1,4 +1,4 @@
-{
+var lang = {
     "title": "Armor网络。",
     "subtitle": "一个快速，简单和匿名的支付系统。",
     "titleButton": "Telegram Wallet（电报钱包）",
